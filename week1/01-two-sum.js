@@ -31,3 +31,23 @@ Constraints:
 Only one valid answer exists.
 
 */
+
+const two_sum = (arr, tar) => {
+  let nums = {}
+
+  for (let i = 0; i < arr.length; i++) {
+    let num = arr[i]
+    let complement = tar - num
+
+    if (complement in nums) {
+      return [nums[complement], i]
+    }
+    // console.log(num, complement)
+    nums[num] = i
+    // console.log(nums)
+  }
+}
+
+console.log(two_sum([2,7,11,15], 9))//=> [0,1]
+console.log(two_sum([3,2,4], 6)) //=> [1, 2]
+console.log(two_sum(nums = [3,3], 6))//=> [0,1]
