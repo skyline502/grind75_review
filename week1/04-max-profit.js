@@ -21,7 +21,22 @@
 // Explanation: In this case, no transactions are done and the max profit = 0.
 
 const maxProfit = prices => {
+  let profit = 0
+  let min = prices[0]
 
+  for (let i = 1; i < prices.length; i++) {
+    let current = prices[i]
+
+    if (current < min) {
+      min = current
+    }
+
+    if (current - min > profit) {
+      profit = current - min
+    }
+  }
+
+  return profit
 }
 
 // Examples
