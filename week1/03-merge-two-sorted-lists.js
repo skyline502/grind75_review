@@ -15,7 +15,43 @@ class Node {
 }
 
 const mergeTwoSortedLists = (head1, head2) => {
-  console.log(head1, head2)
+  if (!head1 && !head2) return null
+  if (!head1) return head2
+  if (!head2) return head1
+
+  let start
+  let h1 = head1
+  let h2 = head2
+
+  if (h1.val < h2.val) {
+    start = h1
+    h1 = head1.next
+  } else {
+    start = h2
+    h2 = head2.next
+  }
+
+  let current = start
+
+  while (h1 !== null && h2 !== null) {
+    if (h1.val < h2.val) {
+      current.next = h1
+      h1 = h1.next
+    } else {
+      current.next = h2
+      h2 = h2.next
+    }
+
+    current = current.next
+  }
+
+  if (!h1) {
+    current.next = h2
+  } else {
+    current.next = h1
+  }
+
+  return start
 }
 
 //examples
@@ -35,3 +71,5 @@ d.next = e
 e.next = f
 
 console.log(mergeTwoSortedLists(a, d))//=>[1, 1, 2, 3, 4, 4]
+console.log(mergeTwoSortedLists(null, null)) //=> null
+console.log(mergeTwoSortedLists(null, new Node(0))) //=> [0]
