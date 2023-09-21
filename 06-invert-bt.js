@@ -12,6 +12,18 @@ class Node {
 }
 
 const invertTree = root => {
+  if (root === null) {
+    return root
+  }
+
+  invertTree(root.left)
+  invertTree(root.right)
+
+  let current = root.left
+  root.left = root.right
+  root.right = current
+
+  return root
 
 }
 
@@ -34,6 +46,8 @@ b.left = d
 b.right = e
 c.left = f
 c.right = g
+
+console.log(invertTree(a))
 
 /*
           4
