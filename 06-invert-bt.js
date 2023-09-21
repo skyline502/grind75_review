@@ -11,19 +11,38 @@ class Node {
   }
 }
 
-const invertTree = root => {
-  if (root === null) {
+const invertTree = root => { //[4,2,7,1,3,6,9]
+  /*
+          4
+        /   \
+       2     7
+      / \   / \
+     1  3  6   9
+*/
+  if (root === null) { //4, 2(left), 7(right)
     return root
   }
 
   invertTree(root.left) //runs function on left tree
+  //2, 1(left), 6
   invertTree(root.right) //runs function on right tree
+  //7, 3(right), 9
 
   let current = root.left //temp var for left tree
+  //2, 1, 6
   root.left = root.right //reassigns left tree to right
+  //2=> 7, 1=> 3, 6=> 9
   root.right = current //reassings right tree to our temp var
+  //7 => 2, 3 => 1, 9 => 6
 
   return root
+  /*
+      4               4                 4
+    /  \            /  \              /  \
+   7    2          7    2            7    2
+                       / \          / \  / \
+                      3   1        9  6 3   1
+   */
 
 }
 
