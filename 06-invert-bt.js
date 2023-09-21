@@ -16,12 +16,12 @@ const invertTree = root => {
     return root
   }
 
-  invertTree(root.left)
-  invertTree(root.right)
+  invertTree(root.left) //runs function on left tree
+  invertTree(root.right) //runs function on right tree
 
-  let current = root.left
-  root.left = root.right
-  root.right = current
+  let current = root.left //temp var for left tree
+  root.left = root.right //reassigns left tree to right
+  root.right = current //reassings right tree to our temp var
 
   return root
 
