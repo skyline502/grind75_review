@@ -27,6 +27,23 @@ nums is sorted in ascending order.
 */
 
 const search = (nums, tar) => {
+  let i = 0;
+  let j = nums.length - 1;
+
+  while (i <= j) {
+    let mid = Math.floor((i + j)/ 2);
+    if (nums[mid] === tar) return mid;
+
+    if (nums[mid] < tar) {
+      i = mid + 1;
+    }
+
+    if (nums[mid] > tar) {
+      j = mid - 1;
+    }
+  }
+
+  return -1;
 
 }
 
