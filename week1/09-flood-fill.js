@@ -42,13 +42,19 @@ n == image[i].length
 const floodFill = (img, sr, sc, color) => {
     let start = [sr, sc];
     let neighbors = [];
-
+    console.log( findNeighbors(img, sr, sc, neighbors));
 }
 
 const findNeighbors = (img, sr, sc, color, neighbors) => {
   const rowValid = 0 >= sr <= img.length - 1;
   const colValid = 0 >= sc <= img[0].length - 1;
 
+  let up = [sr - 1, sc];
+  let down = [sr + 1, sc];
+  let left = [sr, sc - 1];
+  let right = [sr, sc + 1];
+
+  console.log(up, down , left, right);
 
 }
 
