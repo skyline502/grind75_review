@@ -36,3 +36,27 @@ n == image[i].length
 0 <= sr < m
 0 <= sc < n
 */
+
+const floodFill = (img, sr, sc, color) => {
+
+}
+
+//Examples:
+
+//#1
+
+let image = [[0,0,0],[0,0,0]]
+let sr = 0
+let sc = 0
+let color = 0
+
+console.log(floodFill(image, sr, sc, color))// [[0,0,0],[0,0,0]]
+// Explanation: The starting pixel is already colored 0, so no changes are made to the image.
+
+//#2
+image = [[1,1,1],[1,1,0],[1,0,1]]
+sr = 1
+sc = 1
+color = 2
+
+console.log(floodFill(image, sr, sc, color))// =>[[2,2,2],[2,2,0],[2,0,1]]
