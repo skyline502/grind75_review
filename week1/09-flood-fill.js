@@ -40,25 +40,39 @@ n == image[i].length
 */
 
 const floodFill = (img, sr, sc, color) => {
-    let start = [sr, sc];
-    let neighbors = [];
-    console.log( findNeighbors(img, sr, sc, neighbors));
+
+    let originalColor = img[sr][sc];
+
+    if (originalColor === color) {
+      return img;
+    }
+    console.log( findNeighbors(img, originalColor, sr, sc, color));
+
+    findNeighbors(img, originalColor, sr, sc, color);
+    return img;
 }
 
-const findNeighbors = (img, sr, sc, color, neighbors) => {
-  const rowValid = 0 >= sr <= img.length - 1;
-  const colValid = 0 >= sc <= img[0].length - 1;
+const findNeighbors = (img, originalColor, sr, sc, color) => {
+  const rowValid = 0 <= sr && sr < img.length;
+  const colValid = 0 <= sc && sc < img[0].length;
 
-  let up = [sr - 1, sc];
-  let down = [sr + 1, sc];
-  let left = [sr, sc - 1];
-  let right = [sr, sc + 1];
+  if (!rowValid || !colValid) {
+    return;
+  }
 
-  console.log(up, down , left, right);
+  if (img[sr][sc] !== originalColor) {
+    return;
+  }
 
+  img[sr][sc] = color;
+
+  findNeighbors(img, originalColor, sr + 1, sc, color);
+  findNeighbors(img, originalColor, sr - 1, sc, color);
+  findNeighbors(img, originalColor, sr, sc + 1, color);
+  findNeighbors(img, originalColor, sr, sc - 1, color);
 }
 
-//Examples:
+ + 1//Examples:
 
 //#1
 
